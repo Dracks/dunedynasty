@@ -1,0 +1,11 @@
+name: com.example.myapp
+runtime: org.freedesktop.Platform.GLib
+modules:
+  - name: myapp
+    buildsystem: meson
+    build-commands:
+      - meson --prefix=$FLATPAK_DEST --buildtype=release .
+      - ninja -C $FLATPAK_DEST
+    sources:
+      - CMakeLists.txt
+      - src/

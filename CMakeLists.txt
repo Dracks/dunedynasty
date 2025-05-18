@@ -24,6 +24,8 @@ if(NOT DUNE_DATA_DIR)
 	set(DUNE_DATA_DIR ".")
 endif(NOT DUNE_DATA_DIR)
 
+option(INSTALL_DATA "Install resource data directories to system's shared data directory" OFF)
+
 # ----------------------------------------------------------------
 
 if(MINGW)
@@ -190,6 +192,10 @@ install(DIRECTORY ${STATIC_LICENCE_FOLDER} DESTINATION "doc/dunedynasty-${DUNE_D
 if(IS_ABSOLUTE ${DUNE_DATA_DIR})
 	install(DIRECTORY ${STATIC_RESOURCE_FOLDERS} DESTINATION "${DUNE_DATA_DIR}")
 endif(IS_ABSOLUTE ${DUNE_DATA_DIR})
+
+if(INSTALL_DATA)
+	install(DIRECTORY ${STATIC_RESOURCE_FOLDERS} DESTINATION "share/dunedynasty")
+endif(INSTALL_DATA)
 
 # ----------------------------------------------------------------
 
